@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     # Configurações da API
     api_base_url: str = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados"
     
+     # Período de extração
+    data_inicial: str = "01/01/2024"
+    data_final: str = "31/12/2024"
+    
     # Configurações de dados
     data_dir: Path = Path("./data")
     raw_data_dir: Path = Path("./data/raw")
