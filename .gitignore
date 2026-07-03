@@ -1,0 +1,33 @@
+# Ambiente Virtual
+.venv/
+venv/
+ENV/
+
+# Dados (Nunca commitar dados brutos ou processados locais)
+data/
+
+# Variáveis de Ambiente (Senhas, Tokens)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
