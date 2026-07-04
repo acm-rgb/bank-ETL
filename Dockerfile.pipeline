@@ -1,0 +1,27 @@
+# Usa Python 3.14 como base
+FROM python:3.14-slim
+
+# Define o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Instala dependências do sistema (se necessário)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copia apenas o arquivo de dependências primeiro (para cache do Docker)
+COPY pyproject.toml .
+
+# Instala as dependências do Python
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -e .
+
+# Copia o código fonte
+COPY src/ ./src/
+COPY .env .
+
+# Cria diretório para dados
+RUN mkdir -p /app/data/raw /app/data/processed
+
+# Define o comando padrão (executa o pipeline)
+CMD ["python", "-m", "src.main"]
